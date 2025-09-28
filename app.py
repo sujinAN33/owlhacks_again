@@ -51,6 +51,10 @@ def main():
 def map():
     return render_template("map.html")
 
+@app.route("/donation")
+def donation():
+    return render_template("donation.html")
+
 
 # 글쓰기 페이지
 @app.route("/write", methods=["GET", "POST"])

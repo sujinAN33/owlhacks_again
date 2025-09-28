@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>글쓰기</title>
+    <title>posting lost</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
         <div class="container">
             <header>
-                <h1>글쓰기</h1>
+                <h1>posting lost</h1>
             </header>
 
             {% with messages = get_flashed_messages() %}
@@ -25,35 +25,35 @@
 
                 <div class="row">
                     <div>
-                        <p>성별:</p>
+                        <p>gender:</p>
                         <div>
-                            <input type="radio" id="male" name="gender" value="남성" checked>
-                            <label for="male">남성</label>
-                            <input type="radio" id="female" name="gender" value="여성">
-                            <label for="female">여성</label>
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            <label for="male">male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">female</label>
                         </div>
                     </div>
 
                     <div>
-                        <p>백신:</p>
+                        <p>vaccination:</p>
                         <div>
-                            <input type="radio" id="vaccinated" name="vaccine" value="접종 완료" checked>
-                            <label for="vaccinated">접종 완료</label>
-                            <input type="radio" id="not_vaccinated" name="vaccine" value="미접종">
-                            <label for="not_vaccinated">미접종</label>
+                            <input type="radio" id="vaccinated" name="vaccine" value="complete" checked>
+                            <label for="vaccinated">complete</label>
+                            <input type="radio" id="not_vaccinated" name="vaccine" value="not yet">
+                            <label for="not_vaccinated">not yet</label>
                         </div>
                     </div>
 
                     <div>
-                        <p>나이:</p>
+                        <p>age:</p>
                         <input type="number" name="age" min="0" max="120">
                     </div>
                 </div>
 
-                <p>내용:</p>
-                <textarea name="content" placeholder="내용" required></textarea>
+                <p>details:</p>
+                <textarea name="content" placeholder="details" required></textarea>
 
-                <button type="submit">올리기</button>
+                <button type="submit">upload</button>
             </form>
 
             <p><a href="{{ url_for('index') }}"><button class="btn"><span>going back</span></button></a></p>

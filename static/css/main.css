@@ -59,4 +59,21 @@
 .hvr-grow:active {
     transform: scale(1.1);
 }
+.tableauPlaceholder {
+  width: 100%;
+  max-width: 1366px; /* 필요하다면 제한 */
+   aspect-ratio: 16 / 54;
+  min-height: 798px;
+  max-height:803px;
+  margin: 0 auto;
+}
 
+.tableauPlaceholder object {
+  width: 100% !important;
+  height: 100% !important;
+}
+footer{
+    background-color: #619bd9;
+    color:white;
+    padding: 5px 0;
+}

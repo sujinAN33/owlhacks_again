@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>donation</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/donation.css') }}">
+</head>
+<body>
+
+    <section class="hero" id="hero-1">
+      <div class="container1">we need your help</div>
+    </section>
+    
+    <section class="content" id="content-1">
+      <div class="container1"></div>
+    </section>
+
+    <section class="hero" id="hero-2">
+      <div class="container1">every year, millions of paws are dying</div>
+    </section>
+    <section class="content" id="content-2">
+      <div class="container1"></div>
+    </section>
+
+    <section class="hero" id="hero-3">
+      <div class="container1">Hope starts with you</div>
+      <div class="frame">
+        <a href="https://secure.phillypaws.org/give/650517/#!/donation/checkout"><button class="custom-btn btn-3"><span>I'll donate</span></button></a>
+        <a href="{{ url_for('main') }}"><button class="custom-btn btn-3"><span>I'll go main</span></button></a>
+      </div>
+    </section>
+    </div>
+
+</body>
+</html>
