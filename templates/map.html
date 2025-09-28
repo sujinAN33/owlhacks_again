@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_28738c6e5f9069d8e62a425978e439fb {
+                    position: absolute;
+                    width: 70.0%;
+                    height: 60.0%;
+                    left: 15.0%;
+                    top: 20.0%;
+                    border-radius: 5%;
+                    border: 20px outset #f9baefff;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                background-image: url({{ url_for('static', filename='paw.png') }});
+                background-repeat: repeat-x;
+                background-color: rgba(224, 244, 245, 0.7);
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+        <div class="container" style="margin-top: 50px;">
+            <header>
+                <div class="left" >
+                <a href="{{ url_for('main') }}" >
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo" alt="사이트 로고" style="width:100px; height:auto;">
+                </a>
+                <h1 style="font-size:50px;">사진 게시판</h1>
+                </div>
+                <nav>
+                     <a href="{{ url_for('write') }}"><button class="btn"><span>write</span></button></a>
+                </nav>
+            </header>
+        </div>
+        <main>
+            <div class="folium-map" id="map_28738c6e5f9069d8e62a425978e439fb" ></div>
+        </main>
+    
+</body>
+<script>
+    
+    
+            var map_28738c6e5f9069d8e62a425978e439fb = L.map(
+                "map_28738c6e5f9069d8e62a425978e439fb",
+                {
+                    center: [39.9773398, -75.1428715],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_28738c6e5f9069d8e62a425978e439fb);
+
+            
+
+        
+    
+            var tile_layer_f5bb0daed99616b31445d6e3451af024 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f5bb0daed99616b31445d6e3451af024.addTo(map_28738c6e5f9069d8e62a425978e439fb);
+        
+    
+            var marker_5f445d78f0380e329ccbc6cc2ec48789 = L.marker(
+                [39.9773398, -75.1428715],
+                {
+}
+            ).addTo(map_28738c6e5f9069d8e62a425978e439fb);
+        
+    
+            var icon_355949674480d74592a422e98b26f504 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6a69136d71e415619b6b7b360d12c3f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ffb29a206d425cf8d86908f135077fd8 = $(`<div id="html_ffb29a206d425cf8d86908f135077fd8" style="width: 100.0%; height: 100.0%;"><b>Your ZIP</b>: 19122<br>(39.97734, -75.14287)</div>`)[0];
+                popup_6a69136d71e415619b6b7b360d12c3f6.setContent(html_ffb29a206d425cf8d86908f135077fd8);
+            
+        
+
+        marker_5f445d78f0380e329ccbc6cc2ec48789.bindPopup(popup_6a69136d71e415619b6b7b360d12c3f6)
+        ;
+
+        
+    
+    
+            marker_5f445d78f0380e329ccbc6cc2ec48789.bindTooltip(
+                `<div>
+                     Your ZIP: 19122
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5f445d78f0380e329ccbc6cc2ec48789.setIcon(icon_355949674480d74592a422e98b26f504);
+            
+    
+            var marker_cluster_fd46d9b3038fd4e12e62b385bb179d96 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_314d72022fece4e00cd9176f89024ed1 = L.marker(
+                [39.919698, -75.4904323],
+                {
+}
+            ).addTo(marker_cluster_fd46d9b3038fd4e12e62b385bb179d96);
+        
+    
+        var popup_8b46d3941f1a74a3839ed3a2780edb42 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f8ba0613cc54369b6b91b194efd1ec0d = $(`<div id="html_f8ba0613cc54369b6b91b194efd1ec0d" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:12px;">         <img src="https://dbw3zep4prcju.cloudfront.net/animal/d8dcb584-d367-4b66-bb9e-863aab5f700c/image/76a60a91-b424-463e-a62f-cb4ef0588a13.jpg?versionId=5COQUXA_5YayMI8apnCoLLwybN8OpCQt&bust=1759005826" style="width:180px;height:auto;border-radius:8px;margin-bottom:6px;" />         <b>Mr Ziggy</b> (Dog) – Yorkshire Terrier         <br><b>Shelter:</b> Hindes Animal Rescue Team, Inc.         <br><b>Location:</b> GLEN MILLS, PA 19342         <br><b>Distance:</b> 18.8 miles         <br><a href="https://www.petfinder.com/dog/mr-ziggy-78470735/pa/glen-mills/hindes-animal-rescue-team-inc-pa1229/?referrer_id=315dc131-351b-42eb-bb78-ce5bd15ee5d4&utm_source=api&utm_medium=partnership&utm_content=315dc131-351b-42eb-bb78-ce5bd15ee5d4" target="_blank">View on Petfinder</a>     </div>     </div>`)[0];
+                popup_8b46d3941f1a74a3839ed3a2780edb42.setContent(html_f8ba0613cc54369b6b91b194efd1ec0d);
+            
+        
+
+        marker_314d72022fece4e00cd9176f89024ed1.bindPopup(popup_8b46d3941f1a74a3839ed3a2780edb42)
+        ;
+
+        
+    
+    
+            marker_314d72022fece4e00cd9176f89024ed1.bindTooltip(
+                `<div>
+                     Mr Ziggy • 18.8 mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_505235cd79dc5a40379a4446636b5817 = L.marker(
+                [40.0000385, -75.5939034],
+                {
+}
+            ).addTo(marker_cluster_fd46d9b3038fd4e12e62b385bb179d96);
+        
+    
+        var popup_87983f42f2200385c5994b79d66383bf = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d50622c0876cf9a807610285716e8cf0 = $(`<div id="html_d50622c0876cf9a807610285716e8cf0" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:12px;">                  <b>Sweetie aka Savanah</b> (Cat) – Domestic Short Hair         <br><b>Shelter:</b> Brandywine Valley SPCA         <br><b>Location:</b> West Chester, PA 19380         <br><b>Distance:</b> 23.9 miles         <br><a href="https://www.petfinder.com/cat/sweetie-aka-savanah-78470779/pa/west-chester/brandywine-valley-spca-pa174/?referrer_id=315dc131-351b-42eb-bb78-ce5bd15ee5d4&utm_source=api&utm_medium=partnership&utm_content=315dc131-351b-42eb-bb78-ce5bd15ee5d4" target="_blank">View on Petfinder</a>     </div>     </div>`)[0];
+                popup_87983f42f2200385c5994b79d66383bf.setContent(html_d50622c0876cf9a807610285716e8cf0);
+            
+        
+
+        marker_505235cd79dc5a40379a4446636b5817.bindPopup(popup_87983f42f2200385c5994b79d66383bf)
+        ;
+
+        
+    
+    
+            marker_505235cd79dc5a40379a4446636b5817.bindTooltip(
+                `<div>
+                     Sweetie aka Savanah • 23.9 mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2c148f5fd5499a5a90acf5cc8ea7b68f = L.marker(
+                [40.0000385, -75.5939034],
+                {
+}
+            ).addTo(marker_cluster_fd46d9b3038fd4e12e62b385bb179d96);
+        
+    
+        var popup_997c6987eeb43b1c550f54c84f5c8950 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4cf4859110f3aa288740149b26a411cc = $(`<div id="html_4cf4859110f3aa288740149b26a411cc" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:12px;">         <img src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/78470778/1/?bust=1759005952" style="width:180px;height:auto;border-radius:8px;margin-bottom:6px;" />         <b>Bitsy</b> (Dog) – Chihuahua         <br><b>Shelter:</b> Brandywine Valley SPCA         <br><b>Location:</b> West Chester, PA 19380         <br><b>Distance:</b> 23.9 miles         <br><a href="https://www.petfinder.com/dog/bitsy-78470778/pa/west-chester/brandywine-valley-spca-pa174/?referrer_id=315dc131-351b-42eb-bb78-ce5bd15ee5d4&utm_source=api&utm_medium=partnership&utm_content=315dc131-351b-42eb-bb78-ce5bd15ee5d4" target="_blank">View on Petfinder</a>     </div>     </div>`)[0];
+                popup_997c6987eeb43b1c550f54c84f5c8950.setContent(html_4cf4859110f3aa288740149b26a411cc);
+            
+        
+
+        marker_2c148f5fd5499a5a90acf5cc8ea7b68f.bindPopup(popup_997c6987eeb43b1c550f54c84f5c8950)
+        ;
+
+        
+    
+    
+            marker_2c148f5fd5499a5a90acf5cc8ea7b68f.bindTooltip(
+                `<div>
+                     Bitsy • 23.9 mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_318ebbd8fda1a6d9ceb86ae365b56b5a = L.marker(
+                [40.0000385, -75.5939034],
+                {
+}
+            ).addTo(marker_cluster_fd46d9b3038fd4e12e62b385bb179d96);
+        
+    
+        var popup_6c30235acfa2fa924420e628131d4f5c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_98e7ac70f69f9adff0c969c3fe78e781 = $(`<div id="html_98e7ac70f69f9adff0c969c3fe78e781" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:12px;">                  <b>Nala</b> (Cat) – Domestic Short Hair         <br><b>Shelter:</b> Brandywine Valley SPCA         <br><b>Location:</b> West Chester, PA 19380         <br><b>Distance:</b> 23.9 miles         <br><a href="https://www.petfinder.com/cat/nala-78470777/pa/west-chester/brandywine-valley-spca-pa174/?referrer_id=315dc131-351b-42eb-bb78-ce5bd15ee5d4&utm_source=api&utm_medium=partnership&utm_content=315dc131-351b-42eb-bb78-ce5bd15ee5d4" target="_blank">View on Petfinder</a>     </div>     </div>`)[0];
+                popup_6c30235acfa2fa924420e628131d4f5c.setContent(html_98e7ac70f69f9adff0c969c3fe78e781);
+            
+        
+
+        marker_318ebbd8fda1a6d9ceb86ae365b56b5a.bindPopup(popup_6c30235acfa2fa924420e628131d4f5c)
+        ;
+
+        
+    
+    
+            marker_318ebbd8fda1a6d9ceb86ae365b56b5a.bindTooltip(
+                `<div>
+                     Nala • 23.9 mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4b3e17ad22deea9ab7488683dafb9bab = L.marker(
+                [40.0000385, -75.5939034],
+                {
+}
+            ).addTo(marker_cluster_fd46d9b3038fd4e12e62b385bb179d96);
+        
+    
+        var popup_1c32699ed05679802d75a43ae126b166 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b6ee71e52a6f37713dab7a37880c834d = $(`<div id="html_b6ee71e52a6f37713dab7a37880c834d" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; font-size:12px;">         <img src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/78470774/1/?bust=1759005948" style="width:180px;height:auto;border-radius:8px;margin-bottom:6px;" />         <b>Oreo</b> (Dog) – Mixed Breed         <br><b>Shelter:</b> Brandywine Valley SPCA         <br><b>Location:</b> West Chester, PA 19380         <br><b>Distance:</b> 23.9 miles         <br><a href="https://www.petfinder.com/dog/oreo-78470774/pa/west-chester/brandywine-valley-spca-pa174/?referrer_id=315dc131-351b-42eb-bb78-ce5bd15ee5d4&utm_source=api&utm_medium=partnership&utm_content=315dc131-351b-42eb-bb78-ce5bd15ee5d4" target="_blank">View on Petfinder</a>     </div>     </div>`)[0];
+                popup_1c32699ed05679802d75a43ae126b166.setContent(html_b6ee71e52a6f37713dab7a37880c834d);
+            
+        
+
+        marker_4b3e17ad22deea9ab7488683dafb9bab.bindPopup(popup_1c32699ed05679802d75a43ae126b166)
+        ;
+
+        
+    
+    
+            marker_4b3e17ad22deea9ab7488683dafb9bab.bindTooltip(
+                `<div>
+                     Oreo • 23.9 mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_fd46d9b3038fd4e12e62b385bb179d96.addTo(map_28738c6e5f9069d8e62a425978e439fb);
+        
+    
+            var layer_control_ed6cdb04edd320b0af6aa812e9928753_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_f5bb0daed99616b31445d6e3451af024,
+                },
+                overlays :  {
+                    "Nearest 15 animals" : marker_cluster_fd46d9b3038fd4e12e62b385bb179d96,
+                },
+            };
+            let layer_control_ed6cdb04edd320b0af6aa812e9928753 = L.control.layers(
+                layer_control_ed6cdb04edd320b0af6aa812e9928753_layers.base_layers,
+                layer_control_ed6cdb04edd320b0af6aa812e9928753_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_28738c6e5f9069d8e62a425978e439fb);
+
+        
+</script>
+</html>

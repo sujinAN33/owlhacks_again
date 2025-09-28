@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>사진 게시판</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+        <div class="container">
+            <header>
+                <div class="left">
+                <a href="{{ url_for('main') }}" >
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo  hvr-grow" alt="사이트 로고">
+                </a>
+                <h1>사진 게시판</h1>
+                </div>
+                <nav>
+                     <a href="{{ url_for('write') }}"><button class="btn"><span>write</span></button></a>
+                </nav>
+            </header>
+
+               
+
+
+            <div class="posts gallery">
+            {% for post in posts %}
+                <article class="post card">
+                    <a class="thumb" href="{{ url_for('static', filename='uploads/' + post['filename']) }}">
+                        <img src="{{ url_for('static', filename='uploads/' + post['filename']) }}" alt="{{ post['title'] }}">
+                    </a>
+                    <div class="meta">
+                        <h3>{{ post['title'] }}</h3>
+                        <p class="muted">나이: {{ post['age'] }} · 성별: {{ post['gender'] }} · 백신: {{ post['vaccine'] }}</p>
+                        <p>{{ post['content'] }}</p>
+                    </div>
+                </article>
+            {% endfor %}
+            </div>
+        </div>
+</body>
+</html>
+

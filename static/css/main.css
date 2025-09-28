@@ -1,0 +1,62 @@
+/* main.css - styles for templates/main.html hero and lightbox */
+:root{
+	--hero-height:420px;
+	--hero-min-height:200px;
+	--overlay: rgba(0,0,0,0.45);
+}
+
+/* keep the page container consistent with existing layout */
+.container{width:1000px;max-width:900px;margin:0 auto;padding:0 16px}
+
+/* Hero layout */
+.main-container{padding:0}
+.hero{position:relative;overflow:hidden;border-radius:10px;background:#000}
+
+/* constrain the hero image so it never grows out of range */
+.hero-image{width:100%;height:var(--hero-height);max-height:60vh;min-height:var(--hero-min-height);object-fit:cover;display:block;filter:brightness(.72);transition:transform .6s ease}
+.hero:hover .hero-image{transform:scale(1.03)}
+
+.hero-header{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:20px;color:#fff;background:linear-gradient(180deg, rgba(0,0,0,0.35), transparent)}
+.hero-header a{color:#fff;text-decoration:none}
+.hero-header nav a{margin-left:14px;font-weight:600}
+
+.hero-caption{position:absolute;left:24px;bottom:28px;color:#fff;text-align:left;max-width:560px}
+.hero-caption h2{margin:0 0 6px 0;font-size:28px;letter-spacing:0.4px}
+.hero-caption p{margin:0 0 8px;color:#f0f0f0}
+
+/* CTA button variant that sits on hero */
+.btn.cta{background:linear-gradient(90deg,#2b6cb0,#78c7d2);padding:12px 20px;border-radius:8px;margin:8px 0;color:#fff;display:inline-block}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,12,16,0.8);z-index:1200;padding:24px}
+.lightbox img{max-width:95%;max-height:92%;border-radius:8px;box-shadow:0 10px 40px rgba(2,6,23,0.6)}
+.lightbox.show{display:flex}
+
+/* compact header when scrolling */
+.hero-header.compact{padding:10px}
+.hero-header.compact .logo{width:44px}
+
+/* small responsive tweaks */
+@media(max-width:900px){:root{--hero-height:320px}.hero-caption{left:16px;right:16px;bottom:16px}}
+@media(max-width:520px){:root{--hero-height:220px}
+	.hero-caption h2{font-size:20px}
+	.hero-header nav{display:none}
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+

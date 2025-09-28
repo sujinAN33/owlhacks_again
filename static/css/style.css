@@ -1,0 +1,108 @@
+/* style.css - simple responsive styles for the photo board */
+:root{
+  --max-width:900px;
+  --accent:#2b6cb0;
+  --muted:#6b7280;
+  --bg:#f8fafc;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  background:var(--bg);
+  color:#0f172a;
+  display:flex;
+  justify-content:center;
+  padding:24px;
+}
+.container{width:1000px;max-width:var(--max-width); text-align:center;}
+header h1{margin:0 0 12px 0;color:var(--accent);}
+form.upload{background:var(--card);padding:16px;border-radius:8px;box-shadow:0 1px 3px rgba(2,6,23,0.06);display:grid;gap:10px}
+form.upload input[type="text"],form.upload textarea,form.upload input[type="number"]{width:100%;padding:8px 10px;border-radius:6px;border:1px solid #e6eef6;background:#fff}
+form.upload textarea{min-height:90px;resize:vertical}
+form.upload .row{display:flex;gap:10px;align-items:center}
+form.upload .row>div{flex:1}
+form.upload button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
+.posts{margin-top:18px;display:grid;gap:16px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.post{background:var(--card);padding:12px;border-radius:8px;display:flex;gap:12px;align-items:flex-start;transition:transform .15s ease,box-shadow .15s ease}
+.post:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(11,22,44,0.08)}
+.post img{width:100%;height:180px;border-radius:6px;object-fit:cover}
+.post .meta{flex:1}
+.post h3{margin:0 0 6px 0}
+.post p{margin:4px 0;color:var(--muted);font-size:14px}
+.flash{background:#fff3cd;border:1px solid #ffeeba;padding:8px 12px;border-radius:6px;margin:10px 0}
+@media(max-width:640px){.post{flex-direction:column;align-items:center}.post img{width:100%}}
+/* small tweaks for gallery cards */
+.card .meta{padding:6px 0}
+.thumb{display:block;overflow:hidden;border-radius:6px}
+.thumb img{display:block}
+
+.btn {
+  border: none;
+  display: block;
+  text-align: right;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #222;
+  padding: 17px 60px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+}
+
+.btn span {
+  position: relative; 
+  z-index: 1;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #78c7d2;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+.mainbutton{float:left;}
+.logo{float:left}
+.logo{width:60px; height:auto;}
+header{display: flex;
+  align-items: center;          /* 수직 가운데 정렬 */
+  justify-content: space-between; /* 좌우 끝 정렬 */}
+header .left {
+  display: flex;
+  align-items: center; /* 로고랑 제목 같은 라인 */
+}
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
